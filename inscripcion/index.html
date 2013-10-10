@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta content=' ; url=index.html' />
+<style>
+
+table{
+	background:#ccc;
+
+
+}
+
+</style>
+
+<h2><center><script language="JavaScript1.2">
+
+//Neon Lights Text II by G.P.F. (gpf@beta-cc.de)
+//visit http://www.beta-cc.de
+//Visit http://www.dynamicdrive.com for this script 
+
+var message="Junta de Clasificación Nivel Secundaria Listas de Interinatos y Suplencias Sede Resistencia"
+var neonbasecolor="gray"
+var neontextcolor="yellow"
+var neontextcolor2="#FFFFA8"
+var flashspeed=100						// speed of flashing in milliseconds
+var flashingletters=3						// number of letters flashing in neontextcolor
+var flashingletters2=1						// number of letters flashing in neontextcolor2 (0 to disable)
+var flashpause=0						// the pause between flash-cycles in milliseconds
+
+///No need to edit below this line/////
+
+var n=0
+if (document.all||document.getElementById){
+document.write('<font color="'+neonbasecolor+'">')
+for (m=0;m<message.length;m++)
+document.write('<span id="neonlight'+m+'">'+message.charAt(m)+'</span>')
+document.write('</font>')
+}
+else
+document.write(message)
+
+function crossref(number){
+var crossobj=document.all? eval("document.all.neonlight"+number) : document.getElementById("neonlight"+number)
+return crossobj
+}
+
+function neon(){
+
+//Change all letters to base color
+if (n==0){
+for (m=0;m<message.length;m++)
+crossref(m).style.color=neonbasecolor
+}
+
+//cycle through and change individual letters to neon color
+crossref(n).style.color=neontextcolor
+
+if (n>flashingletters-1) crossref(n-flashingletters).style.color=neontextcolor2 
+if (n>(flashingletters+flashingletters2)-1) crossref(n-flashingletters-flashingletters2).style.color=neonbasecolor
+
+
+if (n<message.length-1)
+n++
+else{
+n=0
+clearInterval(flashing)
+setTimeout("beginneon()",flashpause)
+return
+}
+}
+
+function beginneon(){
+if (document.all||document.getElementById)
+flashing=setInterval("neon()",flashspeed)
+}
+beginneon()
+
+
+
+</script></h2></center>
+<style>
+		body{
+			background: #ccc;
+			font: small-caption;
+			font-size: 11px;
+			margin: auto;
+		}
+		a {
+			background: -webkit-linear-gradient(#fff , #ddd);
+			border: 1px solid #bbb;
+			color: #111;
+			font-size: 13px;
+			float: left;
+			height: 20px;
+			text-align: center;
+			padding: 5px;
+			font-weight: bold;
+			text-shadow : 1px -1px 0px white;
+			text-decoration: none;
+			width: 100px;
+
+		}
+		section{
+			background: -webkit-linear-gradient(#f7f9ed , #fff);
+			border: 1px solid #bbb;
+			border-radius: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 50px;
+			height: 835px;
+			padding: 10px;
+			width: 700px;
+
+		}
+		section label{
+			float: left;
+			height: 30px;
+			width: 120px;
+			text-align: right;
+
+		}
+		section input , select{
+			border: #c0dede 1px 1px solid;
+			height: 30px;
+			margin: 0px 0px 0px 10px;	
+			outline: none;
+
+		}
+		select input:focus{
+			box-shadow: 0px 0px 5px #c0dede;
+
+		}
+		section .error{
+			background: #dd0000;
+			color: white;
+			display: none;
+			float: left;
+			font-weight: bold;
+			height: 30px;
+			text-align: center;
+			padding: 5px;
+			width: 100px;
+		}
+
+</style>
+<script src='js/jquery.js'></script>
+<script>
+
+	$( document ). ready( function(){
+
+		$('#btnEnviar').click(function(){
+
+			event.preventDefault();
+
+			var legajo = $( '.txtlegajo' ).val(),
+			nombre = $( '.txtnombre' ).val(),
+			apellido = $( '.txtapellido' ).val(),
+			dni = $( '.txtdni' ).val(),
+			titulo = $( '.txttitulo' ).val(),
+			localidad = $( '.txtlocalidad' ).val(),
+			esta = $( '.txtesta' ).val(),
+			cargo = $( '.txtcargo' ).val(),
+			cargo1 = $( '.txtcargo1' ).val(),
+			cargo2 = $( '.txtcargo2' ).val(),
+			cargo3 = $( '.txtcargo3' ).val(),
+			cargo4 = $( '.txtcargo4' ).val(),
+			cargo5 = $( '.txtcargo5' ).val(),
+			localidad1 = $( '.txtlocalidad1' ).val(),
+			esta1= $( '.txtesta1' ).val(),
+			obser = $( '.txtobser' ).val();
+			midni = $( '.txtdni' ).val();
+				if (legajo && nombre && apellido && dni && titulo)
+				 {
+
+					$( 'body' ).ajaxStart( function() {
+
+						$( '#contenedor').html( '<img src="img/loading.gif" />');
+
+					});
+
+					$.post( 'php/recibir.php' ,{
+
+						legajo : legajo,
+						nombre : nombre,
+						apellido : apellido,
+						dni : dni,
+						titulo : titulo,
+						localidad : localidad,
+						esta : esta,
+						cargo : cargo,
+						cargo1 : cargo1,
+						cargo2 : cargo2,
+						cargo3 : cargo3,
+						cargo4 : cargo4,
+						cargo5 : cargo5,
+						localidad1 : localidad1,
+						esta1 : esta1,
+						obser : obser
+
+					} , function( exito ){
+
+						$( '#contenedor' ).removeClass('error').html( exito ).fadeIn();
+
+						$( '#verPDF').click(function(){
+							window.open( 'php/verDatos.php?eldni='+midni+'', 'MIPDF' , 'width=600 , height=500' );
+							$( this ).fadeOut( 1000 );
+							return false;
+
+						});
+
+					});
+					$( '.txtlegajo' ).val( '' );
+					$( '.txtnombre' ).val( '' );
+					$( '.txtapellido' ).val( '' );
+					$( '.txtdni' ).val( '' );
+					$( '.txttitulo' ).val( '' );
+					$( '.txtlocalidad' ).val( '' );
+					$( '.txtesta' ).val( '' );
+					$( '.txtcargo' ).val( '' );
+					$( '.txtcargo1' ).val( '' );
+					$( '.txtcargo2' ).val( '' );
+					$( '.txtcargo3' ).val( '' );
+					$( '.txtcargo4' ).val( '' );
+					$( '.txtcargo5' ).val( '' );
+					$( '.txtlocalidad1' ).val( '' );
+					$( '.txtesta1' ).val( '' );
+					$( '.txtobser' ).val( '' );
+				}else{
+
+					$( '#contenedor' ).fadeIn( 500 ).addClass( 'error' ).html( 'Llenar todos los campos' ).fadeOut( 1000 );
+				}
+			
+		});
+});
+
+</script>
+<title>formulario inscripción</title>
+</head>
+
+
+<body>
+
+<section>
+<label> * Ingresa Nº Legajo</label>
+<input type='text' class='txtlegajo' placeholder='' />
+<br><br>
+
+<label> * Nombre</label>
+<input type='text' class='txtnombre' placeholder='Ingrese Nombre...' />
+<br><br>
+
+<label> * Apellido</label>
+<input type='text' class='txtapellido' placeholder='Ingrese Apellido...' />
+<br><br>
+
+<label> * DNI</label>
+
+<input type='text' class='txtdni' maxlength="8" placeholder='07989234...' />
+<br><br>
+
+<label> * Título</label>
+<input type='text' class='txttitulo' placeholder='' />
+<br><br>
+
+
+<fieldset>	 Datos Laborales que Desea Permutar</fieldset>
+<table border="1" celspading="2" id="table">
+<tr>
+
+
+<td><label> Localidad</label>
+<input type='text' class='txtlocalidad' placeholder='' />
+</td>
+
+<td><label> Establecimiento</label>
+<input type='text' class='txtesta' placeholder='' />
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td>
+<label> Cargo o Asignatura / Cantidad / Turno</label>
+<input type='text' class='txtcargo' placeholder='..' />
+</td>
+<td>
+<label>Cargo o Asignatura / Cantidad / Turno </label>
+<input type='text' class='txtcargo1' placeholder='' />
+</td>
+
+<td>
+<label> Cargo o Asignatura / Cantidad / Turno</label>
+<input type='text' class='txtcargo2' placeholder='' />
+</td>
+</tr>
+<tr>
+
+
+<td>
+<label> Cargo o Asignatura / Cantidad / Turno</label>
+<input type='text' class='txtcargo3' placeholder='' />
+</td>
+
+<td>
+<label> Cargo o Asignatura / Cantidad / Turno</label>
+<input type='text' class='txtcargo4' placeholder='' />
+</td>
+
+<td>
+<label> Cargo o Asignatura / Cantidad / Turno</label>
+<input type='text' class='txtcargo5' placeholder='' />
+</td>
+
+
+</tr>
+
+</table>
+
+
+<hr>
+<br><br>
+<fieldset> Lugar de destino donde deseo permutar</fieldset>
+
+
+
+
+<br><br>
+
+
+<label> Localidad</label>
+<input type='text' class='txtlocalidad1' placeholder='' />
+<br><br>
+
+<label> Establecimiento</label>
+<input type='text' class='txtesta1' placeholder='' />
+<br><br>
+
+
+<label> Observaciones</label>
+<textarea type='text' class='txtobser' placeholder='' heigth="200"/></textarea>
+<br><br>
+<!--
+<br><br>
+
+<label> Ingresa Sede</label>
+<select class='lstsede'>
+<option value=''>Elige Sede</option>
+<option value='resistencia'>Resistencia</option>
+<option value='castelli'>Castelli</option>
+<option value='quitilipi'>Quitilipi</option>
+<option value='pinedo'>Pinedo</option>
+<option value='las palmas'>Las Palmas</option>
+<option value='taco pozo'>Taco Pozo</option>
+
+</select>-->
+<br><br>
+<a href="#" id='btnEnviar'>Rgistrarse</a>
+<div id='contenedor'></div>
+
+</section>
+<br>
+<br>
+
+</body>
+
+</html>
