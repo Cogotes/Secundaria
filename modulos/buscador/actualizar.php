@@ -1,5 +1,5 @@
 <?php
-	require_once "config/bbdd1.php";
+	require_once "config/bbdd2.php";
 	$consulta = "update datos_secu set
 					escuela = '".$_POST['escuela']."',
 					numero = '".$_POST['numero']."',

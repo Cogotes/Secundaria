@@ -8,7 +8,7 @@ if($_SESSION["loginTrue"]){
 ?>
 	<script type="text/javascript" language="javascript"> 
 			alert ("Debes iniciar sessión");
-			location.href ='index.php?mod=login&acc=login';<!-- probar si anda esto -->
+			location.href ='index.php?mod=login&acc=login';<!--// probar si anda esto -->
 	</script>
 <?php
 	echo "NO ESTAS Login ... ";

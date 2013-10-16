@@ -9,7 +9,7 @@ $currentPage = $_SERVER["PHP_SELF"];
 
 $maxRows_Rs = 1;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
 
-$pageNum_Rs = 2;
+$pageNum_Rs = 0;
 
 if (isset($_GET['pageNum_Rs'])) {
 
@@ -22,10 +22,12 @@ $startRow_Rs = $pageNum_Rs * $maxRows_Rs;
 
 mysql_select_db($database_pellegrini, $conectar);
 
-$query_Rs = "SELECT DATOS.DNI , DATOS.APELLIDO_NOMBRE , DATOS.LEGAJO , escuela_1.localidad1 , escuela_1.establecimiento1 , escuela_1.cargo1 , escuela_1.horas1
-FROM DATOS
-INNER JOIN escuela_1 
-ON DATOS.LEGAJO = escuela_1.legajo  ";
+$query_Rs = "SELECT * FROM DATOS";
+
+// $query_Rs = "SELECT DATOS.DNI , DATOS.APELLIDO_NOMBRE , DATOS.LEGAJO , escuela_1.localidad1 , escuela_1.establecimiento1 , escuela_1.cargo1 , escuela_1.horas1
+// FROM DATOS
+// INNER JOIN escuela_1 
+// ON DATOS.LEGAJO = escuela_1.legajo  ";
 
 
 //Continúa en la página siguiente
@@ -36,7 +38,7 @@ if ($_GET['id']) // Si existe la variable "id" en la barra url...
 
 $id = $_GET['id'];
 
-$query_Rs = "SELECT ";
+$query_Rs = "SELECT * FROM DATOS";
 
 }
 
@@ -49,7 +51,7 @@ if ($_GET['buscar'])
 $buscar = $_GET['buscar'];
 
 
-$query_Rs ="SELECT * FROM permutas WHERE id LIKE \"%$buscar%\" OR numero LIKE \"%$buscar%\" ORDER BY id DESC" ;
+$query_Rs ="SELECT * FROM permutas WHERE LEGAJO LIKE \"%$buscar%\" OR DNI LIKE \"%$buscar%\" ORDER BY id DESC" ;
 
 }
 
@@ -106,7 +108,12 @@ $queryString_Rs = "&" . htmlentities(implode("&", $newParams));
 $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 ?>
-<fieldset><h3>Listas permutas</h3></fieldset>
+
+
+
+
+
+<fieldset><h3>Permuta</h3></fieldset>
 
 
 <!-- comienzo tabla **************************************************************************************************-->
@@ -115,34 +122,33 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 <table width="790" height="25" class="CSSTableGenerator">
 
 
-<tr class="CSSTableGenerator"> 
 
 <tr class="CSSTableGenerator">
-
+<td> <div>   *</div> </td>
 <td>legajo</td>
 <td>dni</td>
 <td>apellido nombre</td>
+<td> </td>
 
-<!-- <td>titulo </td>
-<td>Otro titulo </td>
- -->
+
 
 </tr>
 
 
+
 <tr>
 
+<td> ----- </td>
 
-
-<td><div> 
+<td><div id="link"> 
 	<?php echo $row_Rs['LEGAJO']; ?></div></td>
 
-<td><div> 
+<td><div id="link"> 
 	<?php echo $row_Rs['DNI']; ?></div></td>
 
-<td><div> 
+<td><div id="link"> 
 	<?php echo $row_Rs['APELLIDO_NOMBRE']; ?></div></td>
-
+<td><div></div></td>
 <!-- <td><div> 
 	<?php// echo $row_Rs['dni']; ?></div></td>
 <td><div> 
@@ -152,9 +158,10 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 </tr>
  -->
+<tr><td></td><td><td><td><td></td></td></td></td></tr> 
 <tr class="CSSTableGenerator">
 
-
+<td> * </td>
 <td>localidad</td>
 <td>establecimiento</td>
 <td>cargo</td>
@@ -164,21 +171,21 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 </tr>
 
 
-<tr>
-<!--<td>
+<tr class="CSSTableGenerator">
+<td>
 <div>
-<?php// echo $row_Rs['legajo']; ?></div></td>-->
+<?php// echo $row_Rs['legajo']; ?></div></td>
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['localidad1']; ?></div></td>
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['establecimiento1']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['cargo1']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['horas1']; ?></div></td>
 <td></td>
 
@@ -202,16 +209,16 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 <div>
 <?php// echo $row_Rs['legajo']; ?></div></td>-->
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['localidad2']; ?></div></td>
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['establecimiento2']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['cargo2']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['horas2']; ?></div></td>
 <td></td>
 
@@ -235,16 +242,16 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 <div>
 <?php// echo $row_Rs['legajo']; ?></div></td>-->
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['localidad3']; ?></div></td>
 
-<td><div>
+<td><div id="link">
 <?php echo $row_Rs['establecimiento3']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['cargo3']; ?></div></td>
 <td>
-<div>
+<div id="link">
 <?php echo $row_Rs['horas3']; ?></div></td>
 <td></td>
 
@@ -355,11 +362,39 @@ $colorfila=0;
 <td height="5"><table width="590" height="80" border="0" cellpadding="0" cellspacing="0" id="table">
 -->
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, 0, $queryString_Rs); ?>" class="txt-paginador">
+
+
+
+
+	<strong>Inicio</strong></a>
+</td>
+<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, max(0, $pageNum_Rs - 1), $queryString_Rs); ?>" class="txt-paginador">
+
+
+<strong> &lt;&lt;&lt;&lt;&lt;&lt;</strong></a></td>
+<td><?
+
+if($totalPages_Rs==0){
+
+echo "0/0";
+
+}else{
+
+echo $pageNum_Rs+1;
+
+echo "/";
+
+echo $totalPages_Rs+1;
+
+}
+
+?></td>
+<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $pageNum_Rs + 1), $queryString_Rs); ?>" class="txt-paginador">
+
+
+<strong>&gt;&gt;&gt;&gt;&gt;&gt; </strong></a></td>
+<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, $totalPages_Rs, $queryString_Rs); ?>" class="txt-paginador"><strong>Fin</strong></a></td>
 
 
 </tr>
@@ -377,28 +412,37 @@ $colorfila=0;
 <tr class="CSSTableGenerator">
 
 <!--Continúa en la página siguiente-->
-<td width="60" class="txt-paginador"><div align="left">
+<td width="60" class="txt-paginador">
 
-<?php if ($pageNum_Rs > 0) { // Show if not first page ?>
+	<div align="left">
 
-<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, 0, $queryString_Rs); ?>" class="txt-paginador">
-	<strong>Primero</strong></a>
+	<?php if ($pageNum_Rs > 0) { // Show if not first page ?>
+
+
 
 <?php } // Show if not first page ?>
 
+
+
 </div></td>
+
+
 
 <td width="300" class="txt-paginador"><div align="left">
 
+
+
 <?php if ($pageNum_Rs > 0) { // Show if not first page ?>
 
-<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, max(0, $pageNum_Rs - 1), 
-$queryString_Rs); ?>" class="txt-paginador">
-<strong> &lt; Anterior</strong></a>
+
+
+
 
 <?php } // Show if not first page ?>
 
+
 </div></td>
+
 
 <td width="870"><div align="center" class="txt-paginador"><strong>
 
@@ -416,8 +460,7 @@ echo $i." -";
 
 }else{?>
 
-<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $i-1), 
-$queryString_Rs); ?>"><? echo $i;?></a>
+<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $i-1), $queryString_Rs); ?>"><? echo $i;?></a>
 
 <?php 
 
@@ -427,13 +470,21 @@ $queryString_Rs); ?>"><? echo $i;?></a>
 
 ?>
 
+
 </strong></div></td>
+
 
 <td width="100"><div align="right" class="txt-paginador">
 
+
 <?php if ($pageNum_Rs < $totalPages_Rs) { // Show if not last page ?>
 
-<div align="center"><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $pageNum_Rs + 1), $queryString_Rs); ?>" class="txt-paginador"><strong>Siguiente &gt; </strong></a> </div>
+
+<div align="center">
+
+
+ </div>
+
 
 <?php } // Show if not last page ?>
 
@@ -443,7 +494,7 @@ $queryString_Rs); ?>"><? echo $i;?></a>
 
 <?php if ($pageNum_Rs < $totalPages_Rs) { // Show if not last page ?>
 
-<div align="center" class="txt-paginador"><span class="txt-paginador"><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, $totalPages_Rs, $queryString_Rs); ?>" class="txt-paginador"><strong>Ultimo</strong></a></span> </div>
+<div align="center" class="txt-paginador"><span class="txt-paginador"></span> </div>
 
 <?php } // Show if not last page ?>
 
@@ -455,25 +506,11 @@ $queryString_Rs); ?>"><? echo $i;?></a>
 
 <tr>
 
-<td height="16"><div align="right" class="txt-paginador"><strong>Página:
+<td height="16"><div align="right" class="txt-paginador">
 
-<?
+	<strong>Página:
 
-if($totalPages_Rs==0){
 
-echo "0/0";
-
-}else{
-
-echo $pageNum_Rs+1;
-
-echo "/";
-
-echo $totalPages_Rs+1;
-
-}
-
-?>
 
 
 

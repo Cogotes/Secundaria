@@ -37,6 +37,7 @@
 	}
 ?>
         <script language='JavaScript'>;
-		location.href ='index.php?mod=buscador&acc=permutas';
+        location.href="index.php?mod=buscador&acc=modificar_titular&LEGAJO=<?php echo $_POST['LEGAJO']; ?>";
+		//location.href ='index.php?mod=buscador&acc=permutas';
 		</script>;
 

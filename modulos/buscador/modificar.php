@@ -12,7 +12,7 @@
 <?php
 
 		endif;
-	require_once("config/bbdd1.php");
+	require_once("config/bbdd2.php");
 	$query = mysql_query("select * from datos_secu where id = ".$_GET["id"]);
 if($row = mysql_fetch_array($query,MYSQL_ASSOC)):
 ?>

@@ -5,15 +5,14 @@
 <form action="index.php?mod=login&acc=login_titular" method="POST" name="login" id="login">
 	
 	  
-	    <p><span class="Estilo1">DNI</span>  
-	            <br />
-	      
+	    <p><strong>DNI</strong>  
+	            <br />	      
           <input type="text" name="DNI" id="DNI" size="10">
         </p>
 	  
 
-	    <p><span class="Estilo1">N&utilde;mero de Legajo</span>  
-	      RESPETAR MAYUSCULAS
+	    <p><strong>N&utilde;mero de Legajo</strong>  
+	     <p>RESPETAR MAYUSCULAS</p> 
 	      <br />
 	      <input type="password" name="LEGAJO" id="LEGAJO" size="10"> 
 	      

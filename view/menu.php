@@ -21,7 +21,7 @@
 
 <li><a href="index.php">Inicio</a></li>
 <hr>
-<li><a href="http://dirdocumentacion.com.ar/secundaria/modulos/buscador/documentos/ORIENTADOR0.pdf" target="_blanck">Orientador listas</a></li>
+<li><a href="http://dirdocumentacion.com.ar/secundaria/modulos/buscador/documentos/ORIENTADOR0.pdf" target="_blanck">Orientador</a></li>
 <hr>
 <li><a href="index.php?mod=nosotros&acc=nosotros">Contacto</a></li>
 <!--
@@ -34,14 +34,15 @@
 
 <hr>
 
-  
+<li><a href="index.php?mod=buscador&acc=permutas">Permutas</a></li>  
 
 <?php   if($_SESSION['permisos']==3):   ?>
-<li><a href="index.php?mod=buscador&acc=permutas">Listas Permutas</a></li>
-<li><a href="index.php?mod=buscador&acc=buscador_permuta">Agregar Permu</a></li>
+
+<!-- <li><a href="index.php?mod=buscador&acc=buscador_permuta">Solicitar</a></li> -->
+<!-- <li><a href="index.php?mod=buscador&acc=detalle_titular&LEGAJO=<?php// echo $_POST['LEGAJO']; ?>">Perfil</a></li> -->
 <li><a href="index.php?mod=login&acc=logout_titular">Salir</a></li>
 <?php else:; ?>
-<li><a href="index.php?mod=login&acc=loguear_titular">Login Titular</a></li>
+<li><a href="index.php?mod=login&acc=loguear_titular">Solicitar</a></li>
 <?php endif; ?>
 
 
