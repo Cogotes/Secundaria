@@ -5,7 +5,7 @@
 require_once "config/bbdd3.php"; 
 // Aqui se incluye la conexion a la base de datos
 
-$currentPage = $_SERVER["PHP_SELF"];
+//$currentPage = $_SERVER["PHP_SELF"];
 
 $maxRows_Rs = 20;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
 
@@ -20,9 +20,9 @@ $pageNum_Rs = $_GET['pageNum_Rs'];
 $startRow_Rs = $pageNum_Rs * $maxRows_Rs;
 
 
-mysql_select_db($database_pellegrini, $conectar);
+//mysql_select_db($database_pellegrini, $conectar);
 
-$query_Rs = "SELECT * FROM DATOS";
+$query_Rs = "SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
 
 // $query_Rs = "SELECT DATOS.DNI , DATOS.APELLIDO_NOMBRE , DATOS.LEGAJO , escuela_1.localidad1 , escuela_1.establecimiento1 , escuela_1.cargo1 , escuela_1.horas1
 // FROM DATOS
@@ -38,7 +38,9 @@ if ($_GET['id']) // Si existe la variable "id" en la barra url...
 
 $id = $_GET['id'];
 
-$query_Rs = "SELECT * FROM DATOS";
+
+$query_Rs ="SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
+//$query_Rs = "SELECT * FROM DATOS ";
 
 }
 
@@ -50,7 +52,7 @@ if ($_GET['buscar'])
 
 $buscar = $_GET['buscar'];
 
-
+$query_Rs ="SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
 $query_Rs ="SELECT * FROM permutas WHERE LEGAJO LIKE \"%$buscar%\" OR DNI LIKE \"%$buscar%\" ORDER BY id DESC" ;
 
 }
@@ -122,12 +124,13 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 <table width="790" height="25" class="CSSTableGenerator">
 <tr>
 
-<td> Legajo Apellido y Nombre</td>
-<td>actual</td>
+<!-- <td> Legajo Apellido y Nombre</td> -->
+<!-- <td>actual</td>
 <td>Destino</td>
-<td>detalles</td>
+ 
+ <td>detalles</td>
 
-
+-->
 </tr>
 
 
@@ -139,9 +142,9 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 	<div> 
  	
- 	<?php echo $row_Rs['LEGAJO']; ?> ,
+ 	<?php// echo $row_Rs['LEGAJO']; ?> ,
 
-	<?php echo $row_Rs['APELLIDO_NOMBRE']; ?>
+	<?php// echo $row_Rs['APELLIDO_NOMBRE']; ?>
 
 	</div>
 
