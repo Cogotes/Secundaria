@@ -9,6 +9,14 @@
 					establecimiento1 = '".$_POST['establecimiento1']."',
 					cargo1 = '".$_POST['cargo1']."',
 					horas1 = '".$_POST['horas1']."',
+					localidad2 = '".$_POST['localidad2']."',
+					establecimiento2 = '".$_POST['establecimiento2']."',
+					cargo2 = '".$_POST['cargo2']."',
+					horas2 = '".$_POST['horas2']."',
+					localidad3 = '".$_POST['localidad3']."',
+					establecimiento3 = '".$_POST['establecimiento3']."',
+					cargo3 = '".$_POST['cargo3']."',
+					horas3 = '".$_POST['horas3']."',
 					permisos = '".$_POST['permisos']."'
 					where LEGAJO = '".$_POST['LEGAJO']."'
 					";

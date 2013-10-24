@@ -7,9 +7,9 @@ require_once "config/bbdd3.php";
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_Rs = 1;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
+$maxRows_Rs = 20;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
 
-$pageNum_Rs = 0;
+$pageNum_Rs = 1;
 
 if (isset($_GET['pageNum_Rs'])) {
 
@@ -120,204 +120,96 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 
 <table width="790" height="25" class="CSSTableGenerator">
-
-
-
-<tr class="CSSTableGenerator">
-<td> <div>   *</div> </td>
-<td>legajo</td>
-<td>dni</td>
-<td>apellido nombre</td>
-<td> </td>
-
-
-
-</tr>
-
-
-
 <tr>
 
-<td> ----- </td>
-
-<td><div id="link"> 
-	<?php echo $row_Rs['LEGAJO']; ?></div></td>
-
-<td><div id="link"> 
-	<?php echo $row_Rs['DNI']; ?></div></td>
-
-<td><div id="link"> 
-	<?php echo $row_Rs['APELLIDO_NOMBRE']; ?></div></td>
-<td><div></div></td>
-<!-- <td><div> 
-	<?php// echo $row_Rs['dni']; ?></div></td>
-<td><div> 
-	<?php// echo $row_Rs['titulo2']; ?></div></td>
-<td><div> 
-	<?php// echo $row_Rs['titulo2']; ?></div></td>
-
-</tr>
- -->
-<tr><td></td><td><td><td><td></td></td></td></td></tr> 
-<tr class="CSSTableGenerator">
-
-<td> * </td>
-<td>localidad</td>
-<td>establecimiento</td>
-<td>cargo</td>
-<td>horas</td>
+<td> Legajo Apellido y Nombre</td>
+<td>actual</td>
+<td>Destino</td>
+<td>detalles</td>
 
 
 </tr>
 
 
-<tr class="CSSTableGenerator">
-<td>
-<div>
-<?php// echo $row_Rs['legajo']; ?></div></td>
-
-<td><div id="link">
-<?php echo $row_Rs['localidad1']; ?></div></td>
-
-<td><div id="link">
-<?php echo $row_Rs['establecimiento1']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['cargo1']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['horas1']; ?></div></td>
-<td></td>
-
-</tr>
-
-
-<tr class="CSSTableGenerator">
-
-
-<td>localidad</td>
-<td>establecimiento</td>
-<td>cargo</td>
-<td>horas</td>
-
-
-</tr>
-
-
-<tr>
-<!--<td>
-<div>
-<?php// echo $row_Rs['legajo']; ?></div></td>-->
-
-<td><div id="link">
-<?php echo $row_Rs['localidad2']; ?></div></td>
-
-<td><div id="link">
-<?php echo $row_Rs['establecimiento2']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['cargo2']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['horas2']; ?></div></td>
-<td></td>
-
-</tr>
-
-
-<tr class="CSSTableGenerator">
-
-
-<td>localidad</td>
-<td>establecimiento</td>
-<td>cargo</td>
-<td>horas</td>
-
-
-</tr>
-
-
-<tr>
-<!--<td>
-<div>
-<?php// echo $row_Rs['legajo']; ?></div></td>-->
-
-<td><div id="link">
-<?php echo $row_Rs['localidad3']; ?></div></td>
-
-<td><div id="link">
-<?php echo $row_Rs['establecimiento3']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['cargo3']; ?></div></td>
-<td>
-<div id="link">
-<?php echo $row_Rs['horas3']; ?></div></td>
-<td></td>
-
-</tr>
-
-
-
-<tr class="CSSTableGenerator">
-
-
-<td>localidad</td>
-<td>establecimiento</td>
-<td>cargo</td>
-<td>horas</td>
-
-
-</tr>
-
-
-<tr>
-<!--<td>
-<div>
-<?php// echo $row_Rs['legajo']; ?></div></td>-->
-
-<td><div>
-<?php echo $row_Rs['localidad4']; ?></div></td>
-
-<td><div>
-<?php echo $row_Rs['establecimiento4']; ?></div></td>
-<td>
-<div>
-<?php echo $row_Rs['cargo4']; ?></div></td>
-<td>
-<div>
-<?php echo $row_Rs['horas4']; ?></div></td>
-<td></td>
-
-</tr>
-
-
-
-
-
-<div>
 <?php do { ?>
-<!-- 
-<tr>
+
+<tr class="CSSTableGenerator">
+
+<td>
+
+	<div> 
+ 	
+ 	<?php echo $row_Rs['LEGAJO']; ?> ,
+
+	<?php echo $row_Rs['APELLIDO_NOMBRE']; ?>
+
+	</div>
+
+</td>
 
 
 
-<td width="200" class="texto-chico"><div align="left" class="texto-comun"> <?php// echo $row_Rs['localidad1']; ?></div></td>
 
-<td width="200" class="texto-chico"><div align="left" class="texto-comun"> <?php// echo $row_Rs['esta1']; ?></div></td>
 
-<td width="200" height="20" class="texto-chico"><div align="left" class="texto-comun"> <?php// echo $row_Rs['cargo']; ?></div></td>
 
-<td width="120" class="texto-chico"><div align="left" class="texto-comun"><?php// echo $row_Rs['obser']; ?></div></td>
+<td>
 
-<td width="120" class="texto-chico"><div align="left" class="texto-comun"><?php// echo $row_Rs['residencia']; ?></div></td>
+	<div> 
+<?php echo $row_Rs['localidad1']; ?>
+<?php// echo $row_Rs['establecimiento1']; ?>
+<?php// echo $row_Rs['cargo1']; ?>
+<?php// echo $row_Rs['horas1']; ?>
+	
+	</div>
 
-<td class="texto-comun">	<a href="../secundaria/modulos/buscador/documentos/<?php// echo $row_Rs['documento'];?>" id="link" target="_blank">ABRIR / DESCARGAR</a> </td> -->
-<!--<div class="texto-comun" aling="left"><br><br>--><!--<a href="index.php?mod=buscador&acc=detalle&id=<?php// echo $row_Rs['id']; ?>"><?php// echo $row_Rs['documento']; ?> </a>--><!--</td></div>-->
+</td>
 
-</div></td>
+
+<td>
+
+	<div>
+
+<?php echo $row_Rs['localidad2']; ?>
+<?php// echo $row_Rs['establecimiento2']; ?>
+<?php// echo $row_Rs['cargo2']; ?>
+<?php// echo $row_Rs['horas2']; ?>
+	</div>
+
+</td>
+
+<td>
+
+	<div>
+
+<?php// echo $row_Rs['localidad3']; ?>
+<?php// echo $row_Rs['establecimiento3']; ?>
+<?php// echo $row_Rs['cargo3']; ?>
+<?php// echo $row_Rs['horas3']; ?>
+
+<a href="index.php?mod=buscador&acc=detalle_titular&LEGAJO=<?php echo $row_Rs['LEGAJO']; ?>">Ver mas... </a>
+
+
+
+	</div>
+
+</td>
 
 </tr>
+
+</table>
+
+
+
+<table width="790" height="25" class="CSSTableGenerator">
+
+
+
+<tr>
+
+<td>	
+
+
+
 
 
 <?php } while ($row_Rs = mysql_fetch_assoc($Rs));
@@ -343,37 +235,14 @@ $colorfila=0;
 }
 
 ?>
-<!-- 
-</table></td>
 
-</tr>
- -->
-<!--<tr>
-
-<td><table width="590" border="0" cellspacing="1" cellpadding="1" id="table">-->
-<!--
-<tr>
-<td height="16"><img src="images/wna_linea_horiz.gif" width="580" height="1"></td>
-
-</tr>
-
-<tr>
-
-<td height="5"><table width="590" height="80" border="0" cellpadding="0" cellspacing="0" id="table">
--->
-<tr>
-<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, 0, $queryString_Rs); ?>" class="txt-paginador">
-
-
-
+<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, 0, $queryString_Rs); ?>" class="txt-paginador">
 
 	<strong>Inicio</strong></a>
-</td>
-<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, max(0, $pageNum_Rs - 1), $queryString_Rs); ?>" class="txt-paginador">
 
+<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, max(0, $pageNum_Rs - 1), $queryString_Rs); ?>" class="txt-paginador"> <strong> &lt;&lt;&lt;&lt;&lt;&lt;</strong></a>
 
-<strong> &lt;&lt;&lt;&lt;&lt;&lt;</strong></a></td>
-<td><?
+	<?
 
 if($totalPages_Rs==0){
 
@@ -389,30 +258,12 @@ echo $totalPages_Rs+1;
 
 }
 
-?></td>
-<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $pageNum_Rs + 1), $queryString_Rs); ?>" class="txt-paginador">
+?>
+<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, min($totalPages_Rs, $pageNum_Rs + 1), $queryString_Rs); ?>" class="txt-paginador"> <strong>&gt;&gt;&gt;&gt;&gt;&gt; </strong></a>
+<a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, $totalPages_Rs, $queryString_Rs); ?>" class="txt-paginador"><strong>Fin</strong></a>
 
 
-<strong>&gt;&gt;&gt;&gt;&gt;&gt; </strong></a></td>
-<td><a href="<?php printf("%s?pageNum_Rs=%d%s", $currentPage, $totalPages_Rs, $queryString_Rs); ?>" class="txt-paginador"><strong>Fin</strong></a></td>
 
-
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
-
-</tr>
-
-<tr class="CSSTableGenerator">
-
-<!--Continúa en la página siguiente-->
-<td width="60" class="txt-paginador">
 
 	<div align="left">
 
@@ -424,11 +275,14 @@ echo $totalPages_Rs+1;
 
 
 
-</div></td>
+</div>
 
 
 
-<td width="300" class="txt-paginador"><div align="left">
+
+
+
+	<div align="left">
 
 
 
@@ -441,10 +295,9 @@ echo $totalPages_Rs+1;
 <?php } // Show if not first page ?>
 
 
-</div></td>
+</div>
 
-
-<td width="870"><div align="center" class="txt-paginador"><strong>
+<div align="center" class="txt-paginador"><strong>
 
 <?php
 
@@ -471,10 +324,13 @@ echo $i." -";
 ?>
 
 
-</strong></div></td>
+</strong>
+
+</div>
 
 
-<td width="100"><div align="right" class="txt-paginador">
+
+<div align="right" class="txt-paginador">
 
 
 <?php if ($pageNum_Rs < $totalPages_Rs) { // Show if not last page ?>
@@ -488,9 +344,10 @@ echo $i." -";
 
 <?php } // Show if not last page ?>
 
-</div></td>
+</div>
 
-<td width="56"><div align="right">
+
+<div align="right">
 
 <?php if ($pageNum_Rs < $totalPages_Rs) { // Show if not last page ?>
 
@@ -504,11 +361,6 @@ echo $i." -";
 
 
 
-<tr>
-
-<td height="16"><div align="right" class="txt-paginador">
-
-	<strong>Página:
 
 
 
@@ -519,33 +371,9 @@ echo $i." -";
 mysql_free_result($Rs);
 
 ?>
-
-
-</strong></div></td>
-
-</tr>
-<!--
-</table>
-<table border="0" cellpadding="0" cellspacing="0" id="borde-redon">
-
-<tr>
-	<td>
-
-<pre>
-Junta de Clasificación Nivel Secundaria
-
-                        &copy; 2012 - Gobierno del Pueblo de la Provincia del Chaco               Ministerio de Educación Cultura Ciencia y técnologia
-                        Director: Jos&eacute; Ra&uacute;l Eduardo Sim&oacute;n                                    Jefa de Departamento: Olga Luisa Arguello
-                        Analista T&eacute;cnico Docente Adirana Mirian Sanchez                      Publicaciones en Internet: Juan Daniel Estevez 
-                        Telefono:+54-362 4453008 Int. 4197                                   E-mail: meduc.documentacion@ecomchaco.com.ar      </pre>
 </td>
-
 </tr>
 
-
-
-
--->
 </table>
 
 <!-- fin tabla jajaja***************************************************************************************************************************-->
