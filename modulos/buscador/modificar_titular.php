@@ -1,7 +1,7 @@
 <div id="body">
 <?php
 		//include("../Secundaria/modulos/login/comprobar.php");
-		require_once "config/bbdd3.php";
+		require_once "config/bbdd4.php";
 	$consulta = "select * from datos_permu where LEGAJO ='".$_GET['LEGAJO']."'";
 	
 	$query = mysql_query($consulta);

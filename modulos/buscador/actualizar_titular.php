@@ -1,5 +1,5 @@
 <?php
-	require_once "config/bbdd3.php";
+	require_once "config/bbdd4.php";
 	
 	$consulta = "update datos_permu set
 					DNI = '".$_POST['DNI']."',

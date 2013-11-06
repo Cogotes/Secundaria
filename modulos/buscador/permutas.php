@@ -2,7 +2,7 @@
 
 <?php
 
-require_once "config/bbdd3.php"; 
+require_once "config/bbdd4.php"; 
 // Aqui se incluye la conexion a la base de datos
 
 //$currentPage = $_SERVER["PHP_SELF"];

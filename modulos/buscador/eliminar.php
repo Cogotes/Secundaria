@@ -1,6 +1,6 @@
 <?php
 	include("../secundaria/modulos/login/comprobar.php");
-	require_once "config/bbdd3.php"; 
+	require_once "config/bbdd4.php"; 
 	$consulta = "delete from datos_secu where id = '".$_GET['id']."'";
 	$query = mysql_query($consulta);
 	if(!$query):

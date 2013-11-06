@@ -1,5 +1,5 @@
 <?php 
-	require_once "config/bbdd3.php"; 
+	require_once "config/bbdd4.php"; 
 	$consulta = "select * from datos_secu where id ='".$_GET['id']."'";
 	$query = mysql_query($consulta);
 ?>
