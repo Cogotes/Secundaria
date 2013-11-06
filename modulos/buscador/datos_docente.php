@@ -7,7 +7,7 @@ include("../secundaria/modulos/login/comprobar.php");
 	/*grabar archivo en caso que ya se halla subido*/
 	if(isset($_POST["btoGrabar"])){
 		
-		require_once "config/bbdd1.php";
+		require_once "config/bbdd3.php";
 		
 		$file = $_POST['fileUpload'];
 		

@@ -1,7 +1,7 @@
 <div id="body">
 <?php
 
-require_once "config/bbdd1.php"; 
+require_once "config/bbdd3.php"; 
 // Aqui se incluye la conexion a la base de datos
 
 //$currentPage = $_SERVER["PHP_SELF"];

@@ -46,7 +46,7 @@
 
 
 	<td>Cargo/asignatura:<input type="text" name="cargo1" value="<?php echo $row['cargo1']; ?>"></td>
-	<td>Turno <input type="text" name="cargo1" value="<?php echo $row['turno1']; ?>"></td>
+	<td>Turno <input type="text" name="turno1" value="<?php echo $row['turno1']; ?>"></td>
 
 	<td>Horas:<input type="text" name="horas1" value="<?php echo $row['horas1']; ?>"></td>
 
@@ -64,7 +64,7 @@
 
 
 	<td>Otro:<input type="text" name="cargo2" value="<?php echo $row['cargo2']; ?>"></td>
-	<td>Otro:<input type="text" name="cargo1" value="<?php echo $row['turno2']; ?>"></td>
+	<td>Otro:<input type="text" name="turno2" value="<?php echo $row['turno2']; ?>"></td>
 	<td>Otro:<input type="text" name="horas2" value="<?php echo $row['horas2']; ?>"></td>
 
 	<!-- <td><input type="hidden" name="permisos" value="<?php// echo $row['permisos']; ?>"></td>  -->
@@ -83,7 +83,7 @@
 
 
 	<td>Otro:<input type="text" name="cargo3" value="<?php echo $row['cargo3']; ?>"></td>
-	<td>Otro:<input type="text" name="cargo1" value="<?php echo $row['turno3']; ?>"></td>
+	<td>Otro:<input type="text" name="turno3" value="<?php echo $row['turno3']; ?>"></td>
 
 	<td>Otro:<input type="text" name="horas3" value="<?php echo $row['horas3']; ?>"></td>
 
@@ -99,15 +99,15 @@
 <table border="2" cellpadding="1" cellspacing="1" class="CSSTableGenerator">
 	
 	
-	<td> Localidad: <input type="text" name="localidad3" value="<?php echo $row['localidad4']; ?>"></td>
+	<td> Localidad: <input type="text" name="localidad4" value="<?php echo $row['localidad4']; ?>"></td>
 
 	<td> Establecimiento:
-<input type="text" name="establecimiento3" value="<?php echo $row['establecimiento4']; ?>">
+<input type="text" name="establecimiento4" value="<?php echo $row['establecimiento4']; ?>">
 </td>
 
 
 	<!-- <td>Cargo:<input type="text" name="cargo3" value="<?php// echo $row['cargo4']; ?>"></td> -->
-	<td>Turno <input type="text" name="cargo1" value="<?php echo $row['turno4']; ?>"></td>
+	<td>Turno <input type="text" name="turno4" value="<?php echo $row['turno4']; ?>"></td>
 
 	<!-- <td>Horas:<input type="text" name="horas3" value="<?php// echo $row['horas4']; ?>"></td> -->
 

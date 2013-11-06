@@ -1,5 +1,5 @@
 <?php
-	$conectar = mysql_connect("127.0.0.1","root","qw12rt34");
+	$conectar = mysql_connect("127.0.0.1","root","asd123");
 	if(!$conectar){
 		die("Error: no se pudo conectar a la bbdd");
 	}
