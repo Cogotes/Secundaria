@@ -169,6 +169,14 @@ background-color:#66FF00;
 color: #000099;
 }
 
+#linka{
+color: red;
+}
+#lin{
+color: blue;
+}
+
+
 #body #textoHelp{
 	display: block;
 	margin-left: 110px;

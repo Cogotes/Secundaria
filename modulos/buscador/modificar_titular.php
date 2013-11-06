@@ -2,30 +2,24 @@
 <?php
 		//include("../Secundaria/modulos/login/comprobar.php");
 		require_once "config/bbdd3.php";
-	$consulta = "select * from DATOS where LEGAJO ='".$_GET['LEGAJO']."'";
+	$consulta = "select * from datos_permu where LEGAJO ='".$_GET['LEGAJO']."'";
 	
 	$query = mysql_query($consulta);
 	
 	if($row = mysql_fetch_array($query)):
 ?>
-
-<center><h1>Editar Perfil</h1></center>
-
-
-	<?php echo $row['DNI']; ?><br>
-
-
-	<?php echo $row['APELLIDO_NOMBRE']; ?><br>
-
-
-	<?php echo $row['LEGAJO']; ?><br>
-
+<blockquote>
+<center><h2>Carga de Datos Personales </h2></center>
+</blockquote>
+<blockquote>
+	<?php echo $row['DNI']; ?>.<br> <?php echo $row['APELLIDO_NOMBRE']; ?>.<br> <?php echo $row['LEGAJO']; ?>
+</blockquote>
 
 
 <form action="index.php?mod=buscador&acc=actualizar_titular" method="post" name="formNoticia">
 
-
-	<table align="center">
+<blockquote>Lugares actuales donde me desempeño</blockquote>
+	<table border="2" cellpadding="1" cellspacing="1" class="CSSTableGenerator">
 	
 
 	<tr>
@@ -40,67 +34,87 @@
 
 	
 	</tr>
-	
 
 
 	<tr>
 	
-	<td>LOCALIDAD: <input type="text" name="localidad1" value="<?php echo $row['localidad1']; ?>"></td>
+	<td>Localidad:<input type="text" name="localidad1" value="<?php echo $row['localidad1']; ?>"></td>
 
-	<td>ESTABLECIMIENTO:
+	<td>Establecimiento:
 <input type="text" name="establecimiento1" value="<?php echo $row['establecimiento1']; ?>">
 </td>
 
 
-	<td>CARGO:<input type="text" name="cargo1" value="<?php echo $row['cargo1']; ?>"></td>
+	<td>Cargo/asignatura:<input type="text" name="cargo1" value="<?php echo $row['cargo1']; ?>"></td>
+	<td>Turno <input type="text" name="cargo1" value="<?php echo $row['turno1']; ?>"></td>
 
-	<td>HORAS:<input type="text" name="horas1" value="<?php echo $row['horas1']; ?>"></td>
+	<td>Horas:<input type="text" name="horas1" value="<?php echo $row['horas1']; ?>"></td>
 
-	<td><input type="hidden" name="permisos" value="<?php echo $row['permisos']; ?>"></td> 
+	<input type="hidden" name="permisos" value="<?php echo $row['permisos']; ?>">
 	<!-- <br><?php// echo $row['permisos']; ?> -->
 
-	</tr>
-	
 <!-- campos 2 -->
 <tr>
 	
-	<td> Otra LOCALIDAD: <input type="text" name="localidad2" value="<?php echo $row['localidad2']; ?>"></td>
+	<td> Otro:<input type="text" name="localidad2" value="<?php echo $row['localidad2']; ?>"></td>
 
-	<td>Otro ESTABLECIMIENTO:
+	<td>Otro:
 <input type="text" name="establecimiento2" value="<?php echo $row['establecimiento2']; ?>">
 </td>
 
 
-	<td>Otro CARGO:<input type="text" name="cargo2" value="<?php echo $row['cargo2']; ?>"></td>
+	<td>Otro:<input type="text" name="cargo2" value="<?php echo $row['cargo2']; ?>"></td>
+	<td>Otro:<input type="text" name="cargo1" value="<?php echo $row['turno2']; ?>"></td>
+	<td>Otro:<input type="text" name="horas2" value="<?php echo $row['horas2']; ?>"></td>
 
-	<td>Otro HORAS:<input type="text" name="horas2" value="<?php echo $row['horas2']; ?>"></td>
+	<!-- <td><input type="hidden" name="permisos" value="<?php// echo $row['permisos']; ?>"></td>  -->
+	<!-- <br><?php// echo $row['permisos']; ?> -->
+
+
+</tr>
+
+<tr>
+
+	
+	
+	<td>Otro:<input type="text" name="localidad3" value="<?php echo $row['localidad3']; ?>"></td>
+
+	<td>Otro:<input type="text" name="establecimiento3" value="<?php echo $row['establecimiento3']; ?>"></td>
+
+
+	<td>Otro:<input type="text" name="cargo3" value="<?php echo $row['cargo3']; ?>"></td>
+	<td>Otro:<input type="text" name="cargo1" value="<?php echo $row['turno3']; ?>"></td>
+
+	<td>Otro:<input type="text" name="horas3" value="<?php echo $row['horas3']; ?>"></td>
 
 	<!-- <td><input type="hidden" name="permisos" value="<?php// echo $row['permisos']; ?>"></td>  -->
 	<!-- <br><?php// echo $row['permisos']; ?> -->
 
 	</tr>
 
-	<!-- campos 3 -->
+</table>
+<br>
+<blockquote> Lugar donde me interesa permutar</blockquote>
 
-	<tr>
+<table border="2" cellpadding="1" cellspacing="1" class="CSSTableGenerator">
 	
-	<td> 3 LOCALIDAD: <input type="text" name="localidad3" value="<?php echo $row['localidad3']; ?>"></td>
+	
+	<td> Localidad: <input type="text" name="localidad3" value="<?php echo $row['localidad4']; ?>"></td>
 
-	<td> 3 ESTABLECIMIENTO:
-<input type="text" name="establecimiento3" value="<?php echo $row['establecimiento3']; ?>">
+	<td> Establecimiento:
+<input type="text" name="establecimiento3" value="<?php echo $row['establecimiento4']; ?>">
 </td>
 
 
-	<td> 3 CARGO:<input type="text" name="cargo3" value="<?php echo $row['cargo3']; ?>"></td>
+	<!-- <td>Cargo:<input type="text" name="cargo3" value="<?php// echo $row['cargo4']; ?>"></td> -->
+	<td>Turno <input type="text" name="cargo1" value="<?php echo $row['turno4']; ?>"></td>
 
-	<td>3 HORAS:<input type="text" name="horas3" value="<?php echo $row['horas3']; ?>"></td>
+	<!-- <td>Horas:<input type="text" name="horas3" value="<?php// echo $row['horas4']; ?>"></td> -->
 
 	<!-- <td><input type="hidden" name="permisos" value="<?php// echo $row['permisos']; ?>"></td>  -->
 	<!-- <br><?php// echo $row['permisos']; ?> -->
 
 	</tr>
-
-
 
 
 	<tr>
@@ -110,6 +124,7 @@
 	<input type="button" value="Volver" onclick="history.back()">
 	<input type="reset" value="Limpiar">
 	</td>
+	<td></td>
 	</tr>
 	</table>
 	</form>

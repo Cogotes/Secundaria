@@ -1,5 +1,5 @@
 <?php
-	require_once "config/bbdd2.php";
+	require_once "config/bbdd1.php";
 	
 	$consulta = "select * from usuarios_1 where user = '".$_POST['user']."' and pass = '".sha1($_POST['pass'])."'";
 	/*

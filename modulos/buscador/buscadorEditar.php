@@ -1,6 +1,6 @@
 <?php 
 	include("../secundaria/modulos/login/comprobar.php");
-	require_once "config/bbdd2.php"; 
+	require_once "config/bbdd1.php"; 
 	/*
 	* Consulta para contar registros
 	*/

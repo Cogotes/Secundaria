@@ -1,7 +1,7 @@
 <div id="body">
 <?php
 
-require_once "config/bbdd2.php"; 
+require_once "config/bbdd3.php"; 
 // Aqui se incluye la conexion a la base de datos
 
 //$currentPage = $_SERVER["PHP_SELF"];
@@ -21,13 +21,13 @@ $startRow_Rs = $pageNum_Rs * $maxRows_Rs;
 
 mysql_select_db($selectdb,$conectar);//llama a variable conexion selectdb
 
-$query_Rs = "SELECT * FROM datos_secu WHERE numero like '%".$_GET['q']."%' "; 
+$query_Rs = "SELECT * FROM datos_permu WHERE localidad1 like '%".$_GET['q']."%' "; 
 
 if ($_GET['q']) {
 
 $id = $_GET['q'];
 
-$query_Rs = "SELECT * FROM datos_secu WHERE id = '$id' ORDER BY id DESC";
+$query_Rs = "SELECT * FROM datos_permu WHERE localidad1 = '$localidad1' ORDER BY localidad1 DESC";
 
 }
 
@@ -38,7 +38,7 @@ if ($_GET['q'])
 $buscador = $_GET['q'];
 
 
-$query_Rs ="SELECT * FROM datos_secu WHERE id LIKE \"%$buscador%\" OR numero LIKE \"%$buscador%\" ORDER BY id DESC" ;
+$query_Rs ="SELECT * FROM datos_permu WHERE localidad1 LIKE \"%$buscador%\" ORDER BY localidad1 DESC" ;
 
 }
 
@@ -120,11 +120,11 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 <?php do { ?>
 
 <tr>
-<td width="300" height="20" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['escuela']; ?></div></td>
+<td width="300" height="20" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['localidad1']; ?></div></td>
 
-<td width="75" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['numero']; ?></div></td>
+<td width="75" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['establecimiento1']; ?></div></td>
 
-<td width="100" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['localidad']; ?></div></td>
+<td width="100" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['cargo1']; ?></div></td>
 
 <td width="100" class="texto-chico"><div align="left" class="texto-comun"> <?php echo $row_Rs['fecha']; ?></div></td>
 
@@ -134,7 +134,8 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 
 <td width="50" class="texto-chico"><div align="left" class="texto-comun">
-<div class="texto-comun" aling="left"><strong><br><br><a href="../secundaria/modulos/buscador/documentos/<?php echo $row_Rs['documento'];?>" id="link" target="_blank">ABRIR / DESCARGAR</a> 
+	<div id="link"> <a href="index.php?mod=buscador&acc=detalle_titular&LEGAJO=<?php echo $row_Rs['LEGAJO']; ?>">Ver detalles... </a> </div>
+<!-- <div class="texto-comun" aling="left"><strong><br><br><a href="../secundaria/modulos/buscador/documentos/<?php// echo $row_Rs['documento'];?>" id="link" target="_blank">ABRIR / DESCARGAR</a>  -->
 <!--<a href="index.php?mod=buscador&acc=detalle&id=<?php// echo $row_Rs['id']; ?>"><?php// echo $row_Rs['documento']; ?> </a>-->
 
 <!--*************editar************************-->

@@ -1,7 +1,7 @@
 <?php
 	require_once "config/bbdd3.php";
 	
-	$consulta = "select * from DATOS where DNI = '".$_POST['DNI']."' and LEGAJO = '".($_POST['LEGAJO'])."'";
+	$consulta = "select * from datos_permu where DNI = '".$_POST['DNI']."' and LEGAJO = '".($_POST['LEGAJO'])."'";
 	/*
 	*envia la consulta a la base de datos
 	*/
@@ -18,7 +18,7 @@
 
 <script type="text/javascript" language="javascript"> 
 			alert ("Incorrecto");
-			location.href ='index.php';
+			location.href ='index.php?mod=login&acc=loguear_titular';
 </script>
 <?php
 	}else{

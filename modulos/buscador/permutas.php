@@ -7,9 +7,9 @@ require_once "config/bbdd3.php";
 
 //$currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_Rs = 20;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
+$maxRows_Rs = 30;// este numero es el numero de resultados que quieren que se vean por pagina pueden poner algo asi: $maxRows_Rs = 6; para ver paginas con 6 resultados
 
-$pageNum_Rs = 1;
+$pageNum_Rs = 0;
 
 if (isset($_GET['pageNum_Rs'])) {
 
@@ -22,7 +22,7 @@ $startRow_Rs = $pageNum_Rs * $maxRows_Rs;
 
 //mysql_select_db($database_pellegrini, $conectar);
 
-$query_Rs = "SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
+$query_Rs = "SELECT * FROM  datos_permu ORDER BY datos_permu.localidad1 DESC";
 
 // $query_Rs = "SELECT DATOS.DNI , DATOS.APELLIDO_NOMBRE , DATOS.LEGAJO , escuela_1.localidad1 , escuela_1.establecimiento1 , escuela_1.cargo1 , escuela_1.horas1
 // FROM DATOS
@@ -39,7 +39,7 @@ if ($_GET['id']) // Si existe la variable "id" en la barra url...
 $id = $_GET['id'];
 
 
-$query_Rs ="SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
+$query_Rs ="SELECT * FROM  datos_permu ORDER BY datos_permu.localidad1 DESC";
 //$query_Rs = "SELECT * FROM DATOS ";
 
 }
@@ -52,8 +52,8 @@ if ($_GET['buscar'])
 
 $buscar = $_GET['buscar'];
 
-$query_Rs ="SELECT * FROM  DATOS ORDER BY DATOS.localidad1 DESC";
-$query_Rs ="SELECT * FROM permutas WHERE LEGAJO LIKE \"%$buscar%\" OR DNI LIKE \"%$buscar%\" ORDER BY id DESC" ;
+$query_Rs ="SELECT * FROM  datos_permu ORDER BY datos_permu.localidad1 DESC";
+$query_Rs ="SELECT * FROM datos_permu WHERE LEGAJO LIKE \"%$buscar%\" OR DNI LIKE \"%$buscar%\" ORDER BY id DESC" ;
 
 }
 
@@ -122,9 +122,12 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 
 <table width="790" height="25" class="CSSTableGenerator">
-<tr>
 
-<!-- <td> Legajo Apellido y Nombre</td> -->
+<tr>
+<!-- <td>Lugar actual   Deseo permutar</td> -->
+<!-- <td></td>
+<td>Detalles</td>
+ --><!-- <td> Legajo Apellido y Nombre</td> -->
 <!-- <td>actual</td>
 <td>Destino</td>
  
@@ -136,66 +139,71 @@ $queryString_Rs = sprintf("&totalRows_Rs=%d%s", $totalRows_Rs, $queryString_Rs);
 
 <?php do { ?>
 
-<tr class="CSSTableGenerator">
+<!-- <tr class="CSSTableGenerator"> -->
 
-<td>
+<!-- <td>
 
 	<div> 
  	
- 	<?php// echo $row_Rs['LEGAJO']; ?> ,
+ 	<?php// echo $row_Rs['LEGAJO']; ?> 
 
 	<?php// echo $row_Rs['APELLIDO_NOMBRE']; ?>
 
 	</div>
 
 </td>
+ -->
 
 
 
-
-
+<tr>
 
 <td>
 
-	<div> 
-<?php echo $row_Rs['localidad1']; ?>
+
+
+	<div id="linka">LOCALIDAD ACTUAL: <font color="black"><?php echo $row_Rs['localidad1']; ?></font></div>          
+
+ <div id="linka">PERMUTAR A: <font color="black"> <?php echo $row_Rs['localidad2']; ?></font></div> 
+
+<div id="link"> <a href="index.php?mod=buscador&acc=detalle_titular&LEGAJO=<?php echo $row_Rs['LEGAJO']; ?>">Ver detalles... </a> </div>
 <?php// echo $row_Rs['establecimiento1']; ?>
 <?php// echo $row_Rs['cargo1']; ?>
 <?php// echo $row_Rs['horas1']; ?>
 	
-	</div>
+
 
 </td>
 
-
+<!-- 
 <td>
 
-	<div>
+	
 
-<?php echo $row_Rs['localidad2']; ?>
+
 <?php// echo $row_Rs['establecimiento2']; ?>
 <?php// echo $row_Rs['cargo2']; ?>
 <?php// echo $row_Rs['horas2']; ?>
-	</div>
+	
 
 </td>
+ -->
+<!-- <td>
 
-<td>
-
-	<div>
+	
 
 <?php// echo $row_Rs['localidad3']; ?>
 <?php// echo $row_Rs['establecimiento3']; ?>
 <?php// echo $row_Rs['cargo3']; ?>
 <?php// echo $row_Rs['horas3']; ?>
 
-<a href="index.php?mod=buscador&acc=detalle_titular&LEGAJO=<?php echo $row_Rs['LEGAJO']; ?>">Ver mas... </a>
 
 
 
-	</div>
 
-</td>
+	
+
+</td> -->
 
 </tr>
 
@@ -354,13 +362,16 @@ echo $i." -";
 
 <?php if ($pageNum_Rs < $totalPages_Rs) { // Show if not last page ?>
 
-<div align="center" class="txt-paginador"><span class="txt-paginador"></span> </div>
+<div align="center" class="txt-paginador">
+
+	<span class="txt-paginador"></span> </div>
 
 <?php } // Show if not last page ?>
 
 </div>
 
-<div align="center"></div>
+<div align="center">
+</div>
 
 
 
